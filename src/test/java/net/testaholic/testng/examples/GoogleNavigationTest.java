@@ -1,9 +1,13 @@
+package net.testaholic.testng.examples;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
@@ -11,43 +15,45 @@ import org.testng.annotations.Test;
  */
 public class GoogleNavigationTest {
 
+    private WebDriver driver;
 
     @Test
     public void navigateToGoogleChromeTest() {
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.get("http://google.com");
 
         Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
-        driver.quit();
     }
 
     @Test
     public void navigateToGoogleFireFoxTest() {
-        WebDriver driver = new FirefoxDriver();
+        driver = new FirefoxDriver();
         driver.get("http://google.com");
 
         Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
-        driver.quit();
     }
 
 
 
     @Test
     public void navigateToGoogleIETest() {
-        WebDriver driver = new InternetExplorerDriver();
+        driver = new InternetExplorerDriver();
         driver.get("http://google.com");
 
         Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
-        driver.quit();
     }
 
 
     @Test
     public void navigateToGoogleEdgeTest() {
-        WebDriver driver = new EdgeDriver();
+        driver = new EdgeDriver();
         driver.get("http://google.com");
 
         Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
+    }
+
+    @AfterMethod
+    public void killDriver(){
         driver.quit();
     }
 }
