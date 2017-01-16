@@ -1,5 +1,8 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,9 +13,38 @@ public class GoogleNavigationTest {
 
 
     @Test
-    public void navigateToGoogleTest() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\User\\Documents\\selenium_training\\src\\main\\resources\\chromedriver.exe");
+    public void navigateToGoogleChromeTest() {
         WebDriver driver = new ChromeDriver();
+        driver.get("http://google.com");
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
+        driver.quit();
+    }
+
+    @Test
+    public void navigateToGoogleFireFoxTest() {
+        WebDriver driver = new FirefoxDriver();
+        driver.get("http://google.com");
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
+        driver.quit();
+    }
+
+
+
+    @Test
+    public void navigateToGoogleIETest() {
+        WebDriver driver = new InternetExplorerDriver();
+        driver.get("http://google.com");
+
+        Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
+        driver.quit();
+    }
+
+
+    @Test
+    public void navigateToGoogleEdgeTest() {
+        WebDriver driver = new EdgeDriver();
         driver.get("http://google.com");
 
         Assert.assertTrue(driver.getCurrentUrl().contains("google.com"));
